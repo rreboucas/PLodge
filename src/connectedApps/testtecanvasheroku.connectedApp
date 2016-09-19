@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canvasConfig>
+        <accessMethod>Post</accessMethod>
+        <canvasUrl>https://testtecanvasheroku.herokuapp.com/canvas.jsp</canvasUrl>
+        <locations>Aura</locations>
+        <samlInitiationMethod>None</samlInitiationMethod>
+    </canvasConfig>
+    <contactEmail>vlim@salesforce.com</contactEmail>
+    <infoUrl>https://testtecanvasheroku.herokuapp.com/welcome.jsp</infoUrl>
+    <label>testtecanvasheroku</label>
+    <oauthConfig>
+        <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9SemV5D80oBcvQmmimB1YJ4AsP7nSsdbkZfwR7EhhQJxWdNl_kgA1FQLEKhCj43l0A3jLUQTzojKV2RG3</consumerKey>
+        <scopes>Full</scopes>
+    </oauthConfig>
+</ConnectedApp>

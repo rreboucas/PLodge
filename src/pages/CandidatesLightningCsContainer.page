@@ -1,0 +1,98 @@
+<apex:page controller="MyCustomController">
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    
+    <script>
+        
+    	  $Lightning.use("c:Candidate2ComponentsApp", function() {
+              $Lightning.createComponent("c:CandidatesLComponent",
+              "",
+              "lightning1",
+              function(cmp) {
+                // do some stuff
+              });
+              
+              $Lightning.createComponent("c:CandidateDetailPhoto",
+              "",
+              "lightning2",
+              function(cmp) {
+                // do some stuff
+              });
+        });
+
+    
+   </script> 
+    
+
+    
+    
+    
+    
+    <div class="slds">
+        <div class="slds-grid">
+          <div class="slds-col">
+              <!-- Start of Header Grid -->          
+                        <div class="slds-page-header" role="banner">
+              <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate">
+                      <div class="slds-media">
+                        <div class="slds-media__figure">
+                          <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-user">
+                            
+                          </svg>
+                        </div>
+                        <div class="slds-media__body">
+                          <p class="slds-text-heading--label">Recruiting App</p>
+                          <div class="slds-grid">
+                            <h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Candidates View  - 2 Lightning Components</h1>
+                            <div class="slds-col slds-shrink-none">
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-col slds-no-flex slds-align-bottom">
+                      <div class="slds-button-group" role="group">
+                        <button class="slds-button slds-button--neutral">Positions</button>
+                        <button class="slds-button slds-button--neutral">Candidates</button>
+                        <button class="slds-button slds-button--neutral">Interviews</button>
+                        <button class="slds-button slds-button--neutral">Offers</button>
+                        <div class="slds-button--last">
+                          <button class="slds-button slds-button--icon-border-filled">
+                            <svg aria-hidden="true" class="slds-button__icon">
+                              
+                            </svg>
+                            <span class="slds-assistive-text">More</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                 
+                </div>
+            </div>  
+      <!-- End of Header Grid -->
+            
+            
+        </div>
+        <div class="slds-grid slds-grid--align-center" style="padding:2%;">
+          <div class="slds-col--padded">
+              <div id="lightning1"> </div>
+          </div>
+               
+
+
+          <div class="slds-col--padded">
+              <div id="lightning2"> </div>
+          </div>			
+               
+          
+          </div>
+
+        <!----- Grid end --->
+        
+        
+        
+          
+    </div>
+</apex:page>

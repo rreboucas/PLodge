@@ -1,0 +1,7 @@
+<apex:page >
+<apex:outputText value="This is Salesforce Classic."
+    rendered="{! $User.UIThemeDisplayed == 'Theme3' }"/>
+<apex:outputText value="This is Salesforce LEX."
+    rendered="{! $User.UIThemeDisplayed == 'Theme4d' }"/>
+
+</apex:page>

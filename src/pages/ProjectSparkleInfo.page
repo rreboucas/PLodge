@@ -1,0 +1,5 @@
+<apex:page showHeader="true" sidebar="true">
+
+    <iframe height="100%" width="100%" src="https://sites.google.com/a/salesforce.com/isvte-toolkit/isv-te-experts-home/te-platform-areas/lightning-ux/lightning-demo-assets&output=embed" />
+    
+</apex:page>

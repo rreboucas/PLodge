@@ -1,0 +1,28 @@
+<apex:page standardController="Candidate__c" >
+    
+    <apex:includeLightning />
+
+    
+    <script>
+        
+          $Lightning.use("c:Candidate2ComponentsApp", function() {
+              $Lightning.createComponent("c:CandidateDetailPhoto",
+              {
+                "recordId": "{!Candidate__c.Id}"
+            },
+              "lightning1",
+              function(cmp) {
+                // do some stuff
+              });
+
+        });
+    
+
+    
+   </script> 
+    
+
+              <div id="lightning1"> </div>
+
+    
+</apex:page>

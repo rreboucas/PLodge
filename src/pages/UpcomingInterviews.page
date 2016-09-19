@@ -1,0 +1,157 @@
+<apex:page controller="MyCustomController" standardStylesheets="false" showHeader="true">
+    
+    <!-- Salesforce Classic "Aloha" theme - My Recruiting CSS -->
+    
+    <!-- Previous technique to detect the User experience Context:
+
+		function isLightningExperienceOrSalesforce1() 
+    	{
+    		return((typeof sforce != 'undefined') && sforce && (!!sforce.one));
+		}
+
+-->
+    
+    <apex:variable var="uiTheme" value="classic2010Theme" rendered="{!$User.UIThemeDisplayed == 'Theme3'}">
+        <apex:stylesheet value="{!URLFOR($Resource.RecruitingStyles, 'recruiting-vf.css')}" />
+    </apex:variable>
+    
+    <!-- Lightning Desktop theme -->
+    <apex:variable var="uiTheme" value="lightningDesktop" rendered="{!$User.UIThemeDisplayed == 'Theme4d'}">
+        <apex:stylesheet value="{!URLFOR($Resource.SLDS0101, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+    </apex:variable>
+    
+    
+    
+    <!--<apex:stylesheet value="{!URLFOR($Resource.SLDS0101, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />-->
+    
+  <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">  
+    <div class="slds">
+        
+        <ul class="slds-list--vertical slds-has-cards--space has-selections">
+          <li class="slds-list__item">
+            <div class="slds-tile slds-tile--board">
+              <p class="slds-tile__title slds-truncate">Value of $User.UIThemeDisplayed:</p>
+              <div class="slds-tile__detail">
+                <p class="slds-text-heading--medium"><span class="slds-badge slds-theme--warning">{! $User.UIThemeDisplayed }</span></p>
+              </div>
+            </div>
+          </li>
+        </ul>
+        
+
+        <div class="slds-grid">
+          <div class="slds-col">
+              <!-- Start of Header Grid -->          
+                        <div class="slds-page-header" role="banner">
+              <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate">
+                      <div class="slds-media">
+                        <div class="slds-media__figure">
+                          <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-user">
+                            
+                          </svg>
+                        </div>
+                        <div class="slds-media__body">
+                          <p class="slds-text-heading--label">Recruiting App</p>
+                          <div class="slds-grid">
+                            <h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">My Upcoming Interviews</h1>
+                            <div class="slds-col slds-shrink-none">
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-col slds-no-flex slds-align-bottom">
+                      
+                    </div>
+                  </div>                 
+                </div>
+            </div>  
+      <!-- End of Header Grid -->
+            
+            
+        </div>
+		<div style="padding-top: 2%">
+            
+
+        
+        <ul class="timeline">
+            <li class="slds-timeline__item">
+    				<span class="slds-assistive-text">Event</span>
+                    <div class="slds-media slds-media--timeline slds-timeline__media--event">
+                      <div class="slds-media__figure">
+						<svg aria-hidden="true" class="slds-icon slds-icon-custom-98 slds-timeline__icon">
+                          <use xlink:href="{!URLFOR($Resource.SLDS0101, 'assets/icons/custom-sprite/svg/symbols.svg#custom98')}" />
+                        </svg>
+                                              </div>
+                                              <div class="slds-media__body">
+                                    <p style="padding-top: 0.2%">Today</p>
+                                    
+                                  </div>
+                    </div>
+                    </li>
+                <!-- apex repeater  -->
+                <apex:repeat var="interview" value="{!UpcomingInterviews}">
+                	<li class="slds-timeline__item">
+    				<span class="slds-assistive-text">Event</span>
+                    <div class="slds-media slds-media--timeline slds-timeline__media--event">
+                      <div class="slds-media__figure">
+						<svg aria-hidden="true" class="slds-icon slds-icon-custom-25 slds-timeline__icon">
+                          <use xlink:href="{!URLFOR($Resource.SLDS0101, 'assets/icons/custom-sprite/svg/symbols.svg#custom25')}" />
+                        </svg>
+                      </div>
+                      <div class="slds-media__body">
+            <p style="padding-top: 0.2%">{!interview.interViewDate}</p>
+            
+          </div>
+                    </div>
+                    </li>
+                    <apex:repeat var="intdetail" value="{!interview.lstInterviews}">
+                        <li class="slds-timeline__item">
+                            <span class="slds-assistive-text">Interview Details</span>
+                            <div class="slds-media slds-media--timeline slds-timeline__media--event">
+                              <div class="slds-media__figure">
+                                <svg aria-hidden="true" class="slds-icon slds-icon-custom-15 slds-timeline__icon">
+                          <use xlink:href="{!URLFOR($Resource.SLDS0101, 'assets/icons/custom-sprite/svg/symbols.svg#custom15')}" />
+                        </svg>
+                              </div>
+                              <div class="slds-media__body">
+                    <p style="padding-top: 0.2%">{!intdetail.Candidate__r.Name}</p>
+                    <p class="slds-truncate">{!intdetail.Interview_Type__c}</p>
+                    <ul class="slds-list--horizontal slds-text-body--small">
+                      <li class="slds-m-left--xx-small">
+                        <span>Time:</span>
+                        <span class="slds-m-left--xx-small">
+                            <apex:outputText value="{0,date,hh:mm aa}">
+                                <apex:param value="{!intdetail.Interview_Date__c}" /> 
+                            </apex:outputText>
+                        </span>
+                      </li>
+                      <li class="slds-list__item">
+                        <span>Location:</span>
+                        <span class="slds-m-left--xx-small"><a href="#">300 Pike St, San Francisco CA</a></span>
+                      </li>
+                    </ul>
+                    <ul class="slds-list--horizontal slds-text-body--small">
+                      <li class="slds-m-left--xx-small">
+                      <span>Position:</span>
+                      <span class="slds-m-left--xx-small">{!intdetail.Candidate__r.Position__r.Name}</span>
+                      </li>
+                    </ul>
+                  </div>
+                            </div>
+                    </li>
+                        
+                    </apex:repeat>
+              </apex:repeat> 
+		</ul>
+              
+		</div>
+          
+          </div> <!----- Grid end --->
+        
+        
+
+    </html>    
+</apex:page>

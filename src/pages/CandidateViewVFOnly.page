@@ -1,0 +1,235 @@
+<apex:page controller="MyCustomController">
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS0101, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+    
+    
+    <div class="slds">
+        <div class="slds-grid">
+          <div class="slds-col">
+              <!-- Start of Header Grid -->          
+                        <div class="slds-page-header" role="banner">
+              <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate">
+                      <div class="slds-media">
+                        <div class="slds-media__figure">
+                          <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-user">
+                            
+                          </svg>
+                        </div>
+                        <div class="slds-media__body">
+                          <p class="slds-text-heading--label">Recruiting App</p>
+                          <div class="slds-grid">
+                            <h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Candidates View  - Visualforce Only</h1>
+                            <div class="slds-col slds-shrink-none">
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-col slds-no-flex slds-align-bottom">
+                      <div class="slds-button-group" role="group">
+                        <button class="slds-button slds-button--neutral">Positions</button>
+                        <button class="slds-button slds-button--neutral">Candidates</button>
+                        <button class="slds-button slds-button--neutral">Interviews</button>
+                        <button class="slds-button slds-button--neutral">Offers</button>
+                        <div class="slds-button--last">
+                          <button class="slds-button slds-button--icon-border-filled">
+                            <svg aria-hidden="true" class="slds-button__icon">
+                              
+                            </svg>
+                            <span class="slds-assistive-text">More</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                 
+                </div>
+            </div>  
+      <!-- End of Header Grid -->
+            
+            
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="slds-grid slds-grid--align-center" style="padding-top:2%;">
+          <div class="slds-col--padded">
+          
+             <div class="slds-card" style="width: 500.673px;">
+             
+                 <div class="slds-card__header slds-grid  slds-theme--success">
+                    <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                      
+                      <div class="slds-media__body">
+                        <h2 class="slds-text-heading--small slds-truncate">Visualforce Markup</h2>
+                      </div>
+                    </div>
+                    <div class="slds-no-flex">
+                    </div>
+                  </div>
+                 
+                 
+          <div class="slds-card__header slds-grid">
+            <div class="slds-media slds-media--center slds-has-flexi-truncate">
+              <div class="slds-media__figure">
+                
+              </div>
+              <div class="slds-media__body">
+                <h2 class="slds-text-heading--small slds-truncate">Top Candidates:</h2>
+              </div>
+            </div>
+            <div class="slds-no-flex">
+              
+            </div>
+          </div>
+          <div class="slds-card__body">
+            <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+              <thead>
+                <tr>
+                  <th class="slds-text-heading--label slds-size--1-of-3" scope="col">Name</th>
+                  <th class="slds-text-heading--label slds-size--1-of-3" scope="col">Average Score</th>
+                  <th class="slds-text-heading--label slds-size--1-of-3" scope="col"># Interviews</th>
+                  <th class="slds-row-action" scope="col">
+                    <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
+                      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
+                        
+                      </svg>
+                      <span class="slds-assistive-text">Show More</span>
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- apex repeater  -->
+                <apex:variable value="{!1}" var="i"/>
+                <apex:repeat var="candidates" value="{!TopCandidates}">
+                <tr class="slds-hint-parent">
+                    <td class="slds-size--1-of-3" data-label="Name">
+                        <apex:form >
+                            <!-- This is the Visualforce Markup that fires the selectRecord Javascript function which then fires the Lightning Component Application event passing the record id  -->
+                        <apex:commandLink action="{!processLinkClick}" value="{!candidates.Name}" rerender="detail">
+                            <apex:param name="nickName"
+                                value="{!candidates.id}"
+                                assignTo="{!CandidateSelectedId}"/>
+                        </apex:commandLink>
+
+                        </apex:form>
+                            
+                    
+                    </td>
+                  <td style="text-align:center;" class="slds-size--1-of-3" data-label="Score">{!candidates.Average_Score__c}</td>
+                  <td style="text-align:center;" class="slds-size--1-of-3" data-label="Interviews">{!candidates.Number_of_Interviews__c}</td>
+                  <td>
+                    <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
+                      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
+                        
+                      </svg>
+                      <span class="slds-assistive-text">Show More</span>
+                    </button>
+                  </td>
+                </tr>
+              <apex:variable value="{!i+1}" var="i" />
+              </apex:repeat> 
+              </tbody>
+            </table>
+          </div>
+          <div class="slds-card__footer"></div>
+          </div> 
+              
+              
+          </div>
+          <div class="slds-col--padded">
+<!--  -->    
+              
+         <apex:outputPanel id="detail">     
+              <div class="slds-card slds-theme--shade slds-theme--alert-texture">
+                  
+                  <div class="slds-card__header slds-grid  slds-theme--success">
+                    <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                      
+                      <div class="slds-media__body">
+                        <h2 class="slds-text-heading--small slds-truncate">Visualforce Markup</h2>
+                      </div>
+                    </div>
+                    <div class="slds-no-flex">
+                    </div>
+                  </div>
+                  
+                  <div class="slds-card__header .slds-grid--vertical">
+                    <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                      <div class="slds-media__figure">
+                          <span class="slds-avatar slds-avatar--circle slds-avatar--medium">
+                            <img src="{!DisplayCandidates[0].iconUrl}" alt="Placeholder" />
+                          </span>
+                      </div>
+                      <div class="slds-media__body">
+                        <h2 class="slds-text-heading--small slds-truncate"><b>{!DisplayCandidates[0].candidateName} </b> - {!DisplayCandidates[0].positionName}</h2>
+                      </div>
+                    </div>
+                    <div class="slds-no-flex">
+                      <div class="slds-button-group">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slds-card__body">
+                      <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+                      <tbody>
+                
+                        <tr class="slds-hint-parent">
+                            <td class="slds-col">
+                                <table class="slds-table slds-table--bordered">
+                                  <thead>
+                                    <tr class="slds-text-heading--label">
+                                        <th scope="col">
+                                            <span class="slds-truncate">Interview</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span class="slds-truncate">Score</span>
+                                        </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat var="inter" value="{!InterviewsForCandidates}">
+                                        <tr class="slds-hint-parent">
+                                            <td data-label="activity">
+                                              <span class="slds-truncate">{!inter.Interview_Type__c}</span>
+                                            </td>
+                                            <td data-label="stage">
+                                              <span class="slds-truncate">{!inter.Average_Score__c}</span>
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                            </td>
+                          </tr>
+                          </tbody>
+                      </table>
+                </div>
+        </div>
+              
+              </apex:outputPanel>     
+                         
+          
+          </div>
+          </div> <!----- Grid end --->
+        
+        
+        
+          
+    </div>
+</apex:page>

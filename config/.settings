@@ -1,0 +1,16 @@
+{
+    "projectName": "Partner Lodge Demo Org",
+    "username": "admin@gs0.isvdev",
+    "id": "5268eb70-7e50-11e6-b213-b7e34bc88c5f",
+    "namespace": "isvdevgs0",
+    "environment": "production",
+    "loginUrl": "https://login.salesforce.com/",
+    "workspace": "/users/rreboucas/documents/MavensMateProjects",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}
